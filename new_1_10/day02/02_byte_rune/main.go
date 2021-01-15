@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /*
 Go 语言的字符有以下两种：
@@ -35,5 +37,17 @@ func main(){
 	var f float64
 	f = float64(n)
 	fmt.Println()
-	fmt.Printf("%T\n%f", f, f)
+	fmt.Printf("%T\n%f\n", f, f)
+
+	ss := "hello沙河小王子"
+	count := 0
+	tmp := []rune(ss)
+	for _, j := range tmp{
+		//fmt.Println(reflect.TypeOf(j).Name())
+		if j > 256{
+			count++
+			fmt.Println(int32(j), string(j))
+		}
+	}
+	fmt.Println(count)
 }
