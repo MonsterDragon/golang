@@ -77,5 +77,4 @@ func main() {
 	fmt.Println(count)
 
 	search(8)
-
 }
