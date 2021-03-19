@@ -8,7 +8,9 @@ func main() {
 	a := 10
 	b := 3.1415
 
-	fmt.Printf("%05d\n", a)
+	fmt.Printf("%3d\n", a)
+	fmt.Printf("%f", b)
+	fmt.Printf("%05d\n", a) // 其余位置用0补齐
 	fmt.Printf("%.3f\n", b) // %f 默认保留6位小数 %.3f保留3位小数
 	fmt.Printf("%p\n", &a)
 
