@@ -18,6 +18,7 @@ func test3(a ...int){
 }
 
 func test4(a ...int){
+	fmt.Println(a)
 	test3(a[0:]...)
 }
 
