@@ -30,7 +30,7 @@ func main() {
 	u1.id = 1
 	u1.age = 20
 	u1.name = "shuzhan"
-	fmt.Printf("%T\n", u1)
+	fmt.Printf("%T\n", u1) // 值的类型
 	fmt.Printf("p2=%#v\n", u1)
 
 	s2 := &student{} // 取结构体的地址实例化 创建指针类型的结构体

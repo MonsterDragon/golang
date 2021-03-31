@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	var sliceMap = make(map[string][]string, 3)
+	var sliceMap = make(map[string][]string, 3) // {'a': []}
 	fmt.Println(sliceMap)
 	fmt.Println("after init")
 	key := "china"
