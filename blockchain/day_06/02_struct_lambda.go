@@ -11,6 +11,12 @@ type student struct {
 	score float32
 }
 
+// 结构体允许其成员字段在声明时没有字段名而只有类型，这种没有名字的字段就称为匿名字段。
+type zombie struct {
+	string
+	int
+}
+
 func main() {
 	var s1 student
 	s1.score = 10.002
@@ -76,4 +82,8 @@ func main() {
 		10.002,
 	}
 	fmt.Printf("%#v\n", s6)
+
+	z1 := zombie{"mickeal", 10}
+	fmt.Printf("%#v\n", z1)
+	fmt.Println(z1.string, z1.int)
 }

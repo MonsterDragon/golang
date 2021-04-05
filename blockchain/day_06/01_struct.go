@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 func main() {
+	// 结构体中字段大写开头表示可公开访问，小写表示私有（仅在定义当前结构体的包中可访问）
 	type student struct {
 		id int
 		name string
