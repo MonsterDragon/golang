@@ -1,0 +1,78 @@
+1、创建文件 Create：文件不存在创建，文件存在，将文件清空
+    参数：name，打开文件的路径：绝对路径、相对路径
+2、打开文件 Open：一直都方式打开文件，文件不存在，打开失败
+    参数：name，打开文件的路径：绝对路径、相对路径
+3、打开文件OpenFile：以只读、只写、读写方式打开文件
+    参数1：name，打开文件的路径：绝对路径、相对路径
+    参数2：打开文件权限：O_RDONLY O_WRONLY O_RDWR
+    参数3：6
+
+4、写文件
+    按字符串写：WriteString（）	--> n个写入的字符个数
+
+		n, err := f.WriteString("123")
+
+		回车换行：	windows： \r\n	Linux: \n
+
+    按位置写:
+		Seek(): 	修改文件的读写指针位置。
+
+		参1： 偏移量。 正：向文件尾偏， 负：向文件头偏
+
+		参2： 偏移起始位置：
+
+			io.SeekStart: 文件起始位置
+
+			io.SeekCurrent： 文件当前位置
+
+			io.SeekEnd: 文件结尾位置
+
+		返回值：表示从文件起始位置，到当前文件读写指针位置的偏移量。
+
+		off, _ := f.Seek(-5, io.SeekEnd)
+    按字节写：
+		writeAt():  在文件制定偏移位置，写入 []byte ,  通常搭配 Seek()
+
+		参1： 待写入的数据
+
+		参2：偏移量
+
+		返回：实际写出的字节数。
+
+		n, _ = f.WriteAt([]byte("1111"), off)
+
+按字节读、写文件。
+
+	read([]byte):  按字节读文件
+
+	write([]byte)：按字节字节
+
+目录操作：
+	打开目录： OpenFile
+
+		打开目录 OpenFile：	以只读方式打开目录。
+
+		参1：name， 打开目录的路径： 绝对路径、相对路径
+
+		参2：打开目录权限： O_RDONLY
+
+		参3：os.ModeDir
+
+		返回值： 返回一个可以读目录的 文件指针。
+
+	读目录：Readdir
+
+		原型：func (f *File) Readdir(n int) ([]FileInfo, error) {
+
+			参数: 欲打开的目录项个数。 -1 ， 表所有
+
+			返回值：  FileInfo ：
+				type FileInfo interface {
+					Name() string       		// base name of the file
+					Size() int64        		// length in bytes for regular files; system-dependent for others
+					Mode() FileMode     		// file mode bits
+					ModTime() time.Time 	// modification time
+					IsDir() bool        		// abbreviation for Mode().IsDir()
+					Sys() interface{}   		// underlying data source (can return nil)
+				}
+
