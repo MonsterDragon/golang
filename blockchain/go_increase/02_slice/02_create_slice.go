@@ -3,6 +3,12 @@ package main
 import "fmt"
 
 func main() {
+
+	s0 := []int{}
+	if s0 == nil {
+		fmt.Println("aaa")
+		fmt.Println(s0)
+	}
 	// way1
 	s1 := []int{1, 2, 3, 4}
 	fmt.Println(s1)

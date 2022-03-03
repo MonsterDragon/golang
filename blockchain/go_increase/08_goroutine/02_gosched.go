@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"runtime"
+	"time"
 )
 
 func main() {
@@ -10,6 +11,7 @@ func main() {
 	go func() {
 		for {
 			fmt.Println("this is goroutine test")
+			time.Sleep(100 * time.Millisecond)
 		}
 	}()
 

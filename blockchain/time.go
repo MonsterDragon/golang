@@ -83,13 +83,13 @@ func getStep(start_time int) (finish_time int) {
 			if i>=2 && i <=11 {
 				string_line := string(buf)
 				string_slice := strings.Split(string_line, " ")
-				if string_slice[9] == "1" {
+				if string_slice[9] != "1" {
 					sum++
 				}
 			} else {
 				string_line := string(buf)
 				string_slice := strings.Split(string_line, " ")
-				if string_slice[8] == "1" {
+				if string_slice[8] != "1" {
 					sum++
 				}
 			}

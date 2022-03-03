@@ -8,14 +8,14 @@ import (
 )
 
 func main() {
-	f, err := os.OpenFile("aa.txt", os.O_RDWR, 6)
+	f, err := os.OpenFile("aa.txt", os.O_RDWR, 6) // 按行去读
 	if err != nil {
 		fmt.Println("open file error!")
 		return
 	}
 	defer f.Close()
 	r := bufio.NewReader(f)
-	for  {
+	for {
 		b_list, err1 := r.ReadBytes('\n')
 		if err1 != nil && err1 == io.EOF {
 			fmt.Println("read finish")

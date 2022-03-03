@@ -22,6 +22,7 @@ func main() {
 	s3 := append(s1, "kk")
 	fmt.Println(s3, s1) // s1不变 s3: [hh aa bb rr bb kk] s1: [hh aa bb rr bb]
 	fmt.Printf("len(s3)=%d, cap(s3)=%d\n", len(s3), cap(s3))
+	fmt.Printf("%p\n", s3) // 0xc000070060
 
 	//s4 := append(s3, "qq") // append不能给初始化了的数组进行赋值
 	//fmt.Println(s4)

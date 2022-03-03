@@ -1,0 +1,57 @@
+  类型	          格式	                 作用
+测试函数	函数名前缀为Test	    测试程序的一些逻辑行为是否正确
+基准函数	函数名前缀为Benchmark	测试函数的性能
+示例函数	函数名前缀为Example	    为文档提供示例文档
+
+go test命令会遍历所有的*_test.go文件中符合上述命名规则的函数，然后生成一个临时的main包用于调用相应的测试函数，然后构建并运行、报告测试结果，最后清理测试中生成的临时文件。
+
+1、文件名必须以xx_test.go命名
+2、方法必须是Test[^a-z]开头
+3、方法参数必须 t *testing.T
+4、使用go test执行单元测试
+
+Go提供内置功能来检查你的代码覆盖率。我们可以使用go test -cover来查看测试覆盖率。例如：
+
+    split $ go test -cover
+    PASS
+    coverage: 100.0% of statements
+    ok      github.com/pprof/studygo/code_demo/test_demo/split       0.005s
+
+Go还提供了一个额外的-coverprofile参数，用来将覆盖率相关的记录信息输出到一个文件。
+
+    split $ go test -cover -coverprofile=c.out
+    PASS
+    coverage: 100.0% of statements
+    ok      github.com/pprof/studygo/code_demo/test_demo/split       0.005s
+
+上面的命令会将覆盖率相关的信息输出到当前文件夹下面的c.out文件中，然后我们执行go tool cover -html=c.out，使用cover工具来处理生成的记录信息，该命令会打开本地的浏览器窗口生成一个HTML报告。
+
+基准测试就是在一定的工作负载之下检测程序性能的一种方法。基准测试的基本格式如下
+func BenchmarkName(b *testing.B){
+    // ...
+}
+
+基准测试以Benchmark为前缀，需要一个*testing.B类型的参数b，基准测试必须要执行b.N次，这样的测试才有对照性，b.N的值是系统根据实际情况去调整的，从而保证测试的稳定性。 testing.B拥有的方法如下：
+
+func (c *B) Error(args ...interface{})
+func (c *B) Errorf(format string, args ...interface{})
+func (c *B) Fail()
+func (c *B) FailNow()
+func (c *B) Failed() bool
+func (c *B) Fatal(args ...interface{})
+func (c *B) Fatalf(format string, args ...interface{})
+func (c *B) Log(args ...interface{})
+func (c *B) Logf(format string, args ...interface{})
+func (c *B) Name() string
+func (b *B) ReportAllocs()
+func (b *B) ResetTimer()
+func (b *B) Run(name string, f func(b *B)) bool
+func (b *B) RunParallel(body func(*PB))
+func (b *B) SetBytes(n int64)
+func (b *B) SetParallelism(p int)
+func (c *B) Skip(args ...interface{})
+func (c *B) SkipNow()
+func (c *B) Skipf(format string, args ...interface{})
+func (c *B) Skipped() bool
+func (b *B) StartTimer()
+func (b *B) StopTimer()

@@ -21,31 +21,31 @@ func TestMoreSplit(t *testing.T) {
 	}
 }
 
-// func TestChineseSplit(t *testing.T) {
+func TestChineseSplit(t *testing.T) {
 
-// 	// 定义一个测试用例结构体
-// 	type test struct {
-// 		input string
-// 		sep   string
-// 		want  []string
-// 	}
+	// 定义一个测试用例结构体
+	type test struct {
+		input string
+		sep   string
+		want  []string
+	}
 
-// 	// 顶一个存储测试用例的切片
-// 	tests := []test{
-// 		{input: "a:b:c", sep: ":", want: []string{"a", "b", "c"}},
-// 		{input: "a:b:c", sep: ",", want: []string{"a:b:c"}},
-// 		{input: "abcd", sep: "bc", want: []string{"a", "d"}},
-// 		{input: "枯藤老树昏鸦", sep: "老", want: []string{"枯藤", "树昏鸦"}},
-// 	}
+	// 顶一个存储测试用例的切片
+	tests := []test{
+		{input: "a:b:c", sep: ":", want: []string{"a", "b", "c"}},
+		{input: "a:b:c", sep: ",", want: []string{"a:b:c"}},
+		{input: "abcd", sep: "bc", want: []string{"a", "d"}},
+		{input: "枯藤老树昏鸦", sep: "老", want: []string{"枯藤", "树昏鸦"}},
+	}
 
-// 	// 遍历切片，逐一执行测试用例
-// 	for _, tc := range tests {
-// 		got := Split(tc.input, tc.sep)
-// 		if !reflect.DeepEqual(got, tc.want) {
-// 			t.Errorf("excepted:%v, got:%v", tc.want, got)
-// 		}
-// 	}
-// }
+	// 遍历切片，逐一执行测试用例
+	for _, tc := range tests {
+		got := Split(tc.input, tc.sep)
+		if !reflect.DeepEqual(got, tc.want) {
+			t.Errorf("excepted:%v, got:%v", tc.want, got)
+		}
+	}
+}
 
 func TestSon(t *testing.T) {
 	type test struct {
@@ -68,5 +68,12 @@ func TestSon(t *testing.T) {
 				t.Errorf("excepted:%#v, got:%#v", tc.want, got)
 			}
 		})
+	}
+}
+
+// 基准测试
+func BenchmarkSplit(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Split("枯藤老树昏鸦", "老")
 	}
 }

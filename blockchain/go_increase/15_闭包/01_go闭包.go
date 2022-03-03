@@ -48,21 +48,21 @@ import "fmt"
 
 // 返回两个闭包
 
-func test01(base int) (func(int) int, func(int) int) {
-	add := func(i int) int {
-		base += i
-		return base
-	}
+// func test01(base int) (func(int) int, func(int) int) {
+// 	add := func(i int) int {
+// 		base += i
+// 		return base
+// 	}
 
-	sub := func(i int) int {
-		base -= i
-		return base
-	}
+// 	sub := func(i int) int {
+// 		base -= i
+// 		return base
+// 	}
 
-	return add, sub
-}
+// 	return add, sub
+// }
 
-func main() {
-	f1, f2 := test01(10)
-	fmt.Println(f1(1), f2(2))
-}
+// func main() {
+// 	f1, f2 := test01(10)
+// 	fmt.Println(f1(1), f2(2))
+// }

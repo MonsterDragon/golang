@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 type CalcSuper interface {
-	SetData(data ...interface{})
+	SetData(data ...interface{}) // 空接口万能类型，保存任意类型的值
 	CalcOperate() float64
 }
 

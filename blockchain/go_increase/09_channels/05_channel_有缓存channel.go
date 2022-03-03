@@ -15,12 +15,15 @@ func main() {
 			fmt.Println("len(ch):", len(ch), "cap(ch)", cap(ch))
 			time.Sleep(time.Second*2)
 		}
-
+		close(ch)
 	}()
 
-	for i:=0; i<8; i++ {
+	for i:=0; i<9; i++ {
 
-		info := <- ch
-		fmt.Println("主go程读：", info)
+		if info, ok := <- ch; ok == true {
+			fmt.Println("主go程读：", info)
+		} else if ok == false {
+			fmt.Println("channel close")
+		}
 	}
 }
